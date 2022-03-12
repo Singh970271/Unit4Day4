@@ -1,0 +1,387 @@
+ use assignment
+switched to db assignment
+> db
+assignment
+> db.createCollection("users")
+{ "ok" : 1 }
+> show collection
+uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+> show collections
+users
+> db.users.insert({"first_name":"prashant"},{"last_name":"singh"},{"email":"prashant@singh"},{"gender":"Male"})
+WriteResult({ "nInserted" : 1 })
+> db.users.find({}).pretty({})
+{ "_id" : ObjectId("6228323900bb401ee50741b4"), "first_name" : "prashant" }
+> db.users.insert({"first_name":"Rahul","last_name":"kumar","email":"rahul@123","gender":"male","age":24,"ip_address":"abcdef1123"})
+WriteResult({ "nInserted" : 1 })
+> db.users.find({}).pretty()
+{ "_id" : ObjectId("6228323900bb401ee50741b4"), "first_name" : "prashant" }
+{
+        "_id" : ObjectId("622833e100bb401ee50741b5"),
+        "first_name" : "Rahul",
+        "last_name" : "kumar",
+        "email" : "rahul@123",
+        "gender" : "male",
+        "age" : 24,
+        "ip_address" : "abcdef1123"
+}
+> db.users.insertMany([{"first_name":"pawan","last_name":"ponda","email":"pawan@abc","age":24,"Gender":"male","ip_address":"pawan000"},{"first_name":"shivam","last_name":"rai","email":"shivam0123","age":25,"gender":"Male","ip_address":"shivam2546"},{"first_name":"Rahul","last_name":"Gandhi","email":"rahul@122","age":27,"gender":"Male","ip
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:338
+> db.users.insertMany([{"first_name":"pawan","last_name":"ponda","email":"pawan@abc","age":24,"Gender":"male","ip_address":"pawan000"},{"first_name":"shivam","last_name":"rai","email":"shivam0123","age":25,"gender":"Male","ip_address":"shivam2546"},{"first_name":"Rahul","last_name":"Gandhi","email":"rahul@122","age":27,"gender":"Male","ip_address":"gandhi14141"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6228374a00bb401ee50741b6"),
+                ObjectId("6228374a00bb401ee50741b7"),
+                ObjectId("6228374a00bb401ee50741b8")
+        ]
+}
+> db.users.find({}).pretty()
+{ "_id" : ObjectId("6228323900bb401ee50741b4"), "first_name" : "prashant" }
+{
+        "_id" : ObjectId("622833e100bb401ee50741b5"),
+        "first_name" : "Rahul",
+        "last_name" : "kumar",
+        "email" : "rahul@123",
+        "gender" : "male",
+        "age" : 24,
+        "ip_address" : "abcdef1123"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b6"),
+        "first_name" : "pawan",
+        "last_name" : "ponda",
+        "email" : "pawan@abc",
+        "age" : 24,
+        "Gender" : "male",
+        "ip_address" : "pawan000"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b7"),
+        "first_name" : "shivam",
+        "last_name" : "rai",
+        "email" : "shivam0123",
+        "age" : 25,
+        "gender" : "Male",
+        "ip_address" : "shivam2546"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b8"),
+        "first_name" : "Rahul",
+        "last_name" : "Gandhi",
+        "email" : "rahul@122",
+        "age" : 27,
+        "gender" : "Male",
+        "ip_address" : "gandhi14141"
+}
+> db.users.insertMany([{"first_name":"shruti","last_name":"Meena","email":"shruti@123","age":28,"Gender":"Female","ip_address":"shruti01202"},{"first_name":"shivi","last_name":shrivastav","email":"shivi@1456","age":26,"gender":"Female","IP_address":"shivi000"},{"first_name":"niki","last_name":"pal","email":"pal@niki","age":24,"gender":"Female","ip_address":"niki012345"}])
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:184
+> db.users.insertMany([{"first_name":"shruti","last_name":"Meena","email":"shruti@123","age":28,"Gender":"Female","ip_address":"shruti01202"},{"first_name":"shivi","last_name":"shrivastav","email":"shivi@1456","age":26,"gender":"Female","IP_address":"shivi000"},{"first_name":"niki","last_name":"pal","email":"pal@niki","age":24,"gender":"Female","ip_address":"niki012345"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62283b5200bb401ee50741b9"),
+                ObjectId("62283b5200bb401ee50741ba"),
+                ObjectId("62283b5200bb401ee50741bb")
+        ]
+}
+> db.users.find({}).pretty()
+{ "_id" : ObjectId("6228323900bb401ee50741b4"), "first_name" : "prashant" }
+{
+        "_id" : ObjectId("622833e100bb401ee50741b5"),
+        "first_name" : "Rahul",
+        "last_name" : "kumar",
+        "email" : "rahul@123",
+        "gender" : "male",
+        "age" : 24,
+        "ip_address" : "abcdef1123"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b6"),
+        "first_name" : "pawan",
+        "last_name" : "ponda",
+        "email" : "pawan@abc",
+        "age" : 24,
+        "Gender" : "male",
+        "ip_address" : "pawan000"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b7"),
+        "first_name" : "shivam",
+        "last_name" : "rai",
+        "email" : "shivam0123",
+        "age" : 25,
+        "gender" : "Male",
+        "ip_address" : "shivam2546"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b8"),
+        "first_name" : "Rahul",
+        "last_name" : "Gandhi",
+        "email" : "rahul@122",
+        "age" : 27,
+        "gender" : "Male",
+        "ip_address" : "gandhi14141"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741b9"),
+        "first_name" : "shruti",
+        "last_name" : "Meena",
+        "email" : "shruti@123",
+        "age" : 28,
+        "Gender" : "Female",
+        "ip_address" : "shruti01202"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741ba"),
+        "first_name" : "shivi",
+        "last_name" : "shrivastav",
+        "email" : "shivi@1456",
+        "age" : 26,
+        "gender" : "Female",
+        "IP_address" : "shivi000"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741bb"),
+        "first_name" : "niki",
+        "last_name" : "pal",
+        "email" : "pal@niki",
+        "age" : 24,
+        "gender" : "Female",
+        "ip_address" : "niki012345"
+}
+> db.users.update({"name":"prashant"},{$set:{"age":29}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.users.update({"first_name":"prashant"},{$set:{"age":29}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.userfind({}).pretty()
+uncaught exception: TypeError: db.userfind is not a function :
+@(shell):1:1
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("6228323900bb401ee50741b4"),
+        "first_name" : "prashant",
+        "age" : 29
+}
+{
+        "_id" : ObjectId("622833e100bb401ee50741b5"),
+        "first_name" : "Rahul",
+        "last_name" : "kumar",
+        "email" : "rahul@123",
+        "gender" : "male",
+        "age" : 24,
+        "ip_address" : "abcdef1123"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b6"),
+        "first_name" : "pawan",
+        "last_name" : "ponda",
+        "email" : "pawan@abc",
+        "age" : 24,
+        "Gender" : "male",
+        "ip_address" : "pawan000"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b7"),
+        "first_name" : "shivam",
+        "last_name" : "rai",
+        "email" : "shivam0123",
+        "age" : 25,
+        "gender" : "Male",
+        "ip_address" : "shivam2546"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b8"),
+        "first_name" : "Rahul",
+        "last_name" : "Gandhi",
+        "email" : "rahul@122",
+        "age" : 27,
+        "gender" : "Male",
+        "ip_address" : "gandhi14141"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741b9"),
+        "first_name" : "shruti",
+        "last_name" : "Meena",
+        "email" : "shruti@123",
+        "age" : 28,
+        "Gender" : "Female",
+        "ip_address" : "shruti01202"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741ba"),
+        "first_name" : "shivi",
+        "last_name" : "shrivastav",
+        "email" : "shivi@1456",
+        "age" : 26,
+        "gender" : "Female",
+        "IP_address" : "shivi000"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741bb"),
+        "first_name" : "niki",
+        "last_name" : "pal",
+        "email" : "pal@niki",
+        "age" : 24,
+        "gender" : "Female",
+        "ip_address" : "niki012345"
+}
+> db.users.update({"first_name":"prashant"},{$set:{"gender":"Male","email":"prashant@abc"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("6228323900bb401ee50741b4"),
+        "first_name" : "prashant",
+        "age" : 29,
+        "email" : "prashant@abc",
+        "gender" : "Male"
+}
+{
+        "_id" : ObjectId("622833e100bb401ee50741b5"),
+        "first_name" : "Rahul",
+        "last_name" : "kumar",
+        "email" : "rahul@123",
+        "gender" : "male",
+        "age" : 24,
+        "ip_address" : "abcdef1123"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b6"),
+        "first_name" : "pawan",
+        "last_name" : "ponda",
+        "email" : "pawan@abc",
+        "age" : 24,
+        "Gender" : "male",
+        "ip_address" : "pawan000"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b7"),
+        "first_name" : "shivam",
+        "last_name" : "rai",
+        "email" : "shivam0123",
+        "age" : 25,
+        "gender" : "Male",
+        "ip_address" : "shivam2546"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b8"),
+        "first_name" : "Rahul",
+        "last_name" : "Gandhi",
+        "email" : "rahul@122",
+        "age" : 27,
+        "gender" : "Male",
+        "ip_address" : "gandhi14141"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741b9"),
+        "first_name" : "shruti",
+        "last_name" : "Meena",
+        "email" : "shruti@123",
+        "age" : 28,
+        "Gender" : "Female",
+        "ip_address" : "shruti01202"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741ba"),
+        "first_name" : "shivi",
+        "last_name" : "shrivastav",
+        "email" : "shivi@1456",
+        "age" : 26,
+        "gender" : "Female",
+        "IP_address" : "shivi000"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741bb"),
+        "first_name" : "niki",
+        "last_name" : "pal",
+        "email" : "pal@niki",
+        "age" : 24,
+        "gender" : "Female",
+        "ip_address" : "niki012345"
+}
+> db.users.updateMany({},{$set:{"country":"India"}})
+{ "acknowledged" : true, "matchedCount" : 8, "modifiedCount" : 8 }
+> db.users.find({}).pretty()
+{
+        "_id" : ObjectId("6228323900bb401ee50741b4"),
+        "first_name" : "prashant",
+        "age" : 29,
+        "email" : "prashant@abc",
+        "gender" : "Male",
+        "country" : "India"
+}
+{
+        "_id" : ObjectId("622833e100bb401ee50741b5"),
+        "first_name" : "Rahul",
+        "last_name" : "kumar",
+        "email" : "rahul@123",
+        "gender" : "male",
+        "age" : 24,
+        "ip_address" : "abcdef1123",
+        "country" : "India"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b6"),
+        "first_name" : "pawan",
+        "last_name" : "ponda",
+        "email" : "pawan@abc",
+        "age" : 24,
+        "Gender" : "male",
+        "ip_address" : "pawan000",
+        "country" : "India"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b7"),
+        "first_name" : "shivam",
+        "last_name" : "rai",
+        "email" : "shivam0123",
+        "age" : 25,
+        "gender" : "Male",
+        "ip_address" : "shivam2546",
+        "country" : "India"
+}
+{
+        "_id" : ObjectId("6228374a00bb401ee50741b8"),
+        "first_name" : "Rahul",
+        "last_name" : "Gandhi",
+        "email" : "rahul@122",
+        "age" : 27,
+        "gender" : "Male",
+        "ip_address" : "gandhi14141",
+        "country" : "India"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741b9"),
+        "first_name" : "shruti",
+        "last_name" : "Meena",
+        "email" : "shruti@123",
+        "age" : 28,
+        "Gender" : "Female",
+        "ip_address" : "shruti01202",
+        "country" : "India"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741ba"),
+        "first_name" : "shivi",
+        "last_name" : "shrivastav",
+        "email" : "shivi@1456",
+        "age" : 26,
+        "gender" : "Female",
+        "IP_address" : "shivi000",
+        "country" : "India"
+}
+{
+        "_id" : ObjectId("62283b5200bb401ee50741bb"),
+        "first_name" : "niki",
+        "last_name" : "pal",
+        "email" : "pal@niki",
+        "age" : 24,
+        "gender" : "Female",
+        "ip_address" : "niki012345",
+        "country" : "India"
+}
